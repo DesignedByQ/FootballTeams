@@ -1,5 +1,5 @@
 package com.teams.football.exception;
 
-public class TeamException {
+public class TeamsException {
 
 }
