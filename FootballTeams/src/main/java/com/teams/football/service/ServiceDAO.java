@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.teams.football.dto.TeamsDTO;
+import com.teams.football.exception.TeamsException;
 
 
 
@@ -15,7 +16,7 @@ public interface ServiceDAO {
 		
 	String deleteTeamsService(Integer id);
 		
-	TeamsDTO getTeamsServiceById(Integer id);
+	TeamsDTO getTeamsServiceById(Integer id) throws TeamsException;
 	
 	TeamsDTO updateTeamsService(Integer id, Map<String, Object> field);
 	

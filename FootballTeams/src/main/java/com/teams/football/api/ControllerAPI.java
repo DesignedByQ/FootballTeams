@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.teams.football.dto.TeamsDTO;
+import com.teams.football.exception.TeamsException;
 import com.teams.football.service.ServiceDAOImpl;
 
 import jakarta.validation.Valid;
@@ -56,7 +57,7 @@ public class ControllerAPI {
 	}
 	
 	@GetMapping(value = "/team/{id}", consumes = {MediaType.ALL_VALUE})
-	public ResponseEntity<TeamsDTO> getTeam(@PathVariable Integer id){
+	public ResponseEntity<TeamsDTO> getTeam(@PathVariable Integer id) throws TeamsException{
 		
 		return ResponseEntity.status(HttpStatus.OK).body(serviceDAOImpl.getTeamsServiceById(id));
 		

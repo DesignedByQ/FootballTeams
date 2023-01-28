@@ -12,11 +12,7 @@ import org.springframework.data.util.ReflectionUtils;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-import com.football.dto.PlayerDTO;
-import com.football.dto.TeamDTO;
-import com.football.entity.Player;
-import com.football.entity.Team;
-import com.football.exception.TeamNotFoundException;
+
 import com.teams.football.dto.TeamsDTO;
 import com.teams.football.entity.Teams;
 import com.teams.football.exception.TeamsException;
@@ -67,11 +63,19 @@ public class ServiceDAOImpl implements ServiceDAO {
 	}
 
 	@Override
-	public TeamsDTO getTeamsServiceById(Integer id) {
+	public TeamsDTO getTeamsServiceById(Integer id) throws TeamsException{
 
-		Teams ot = teamsRepo.findById(id).orElseThrow(TeamsException::new);//if not using else throw then make team optional
+		Optional<Teams> ot = teamsRepo.findById(id); //if not using else throw then make team optional
 		
-		return modelMapper.map(ot, TeamsDTO.class);
+		if(ot.isEmpty()) {
+			
+			throw new TeamsException("Team does not exist with that ID");
+			
+		} else {
+		
+			return modelMapper.map(ot, TeamsDTO.class);
+		
+		}
 		
 	}
 
@@ -102,6 +106,12 @@ public class ServiceDAOImpl implements ServiceDAO {
 
 	@Override
 	public TeamsDTO replaceTeamsService(Integer id, TeamsDTO teamsDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/*@Override
+	public TeamsDTO replaceTeamsService(Integer id, TeamsDTO teamsDTO) {
 
 		Optional<Teams> t = teamsRepo.findById(id);
 		
@@ -120,6 +130,6 @@ public class ServiceDAOImpl implements ServiceDAO {
 		}
 		
 		return modelMapper.map(teamsRepo.save(t.get()), TeamsDTO.class);
-	}
+	}*/
 
 }
