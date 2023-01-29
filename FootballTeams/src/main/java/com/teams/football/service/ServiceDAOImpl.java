@@ -20,13 +20,14 @@ import com.teams.football.repo.TeamsRepo;
 
 @Service(value="serviceDAO")
 public class ServiceDAOImpl implements ServiceDAO {
-	
+	//update to return a list of squad players when finished
 	@Autowired
 	private TeamsRepo teamsRepo;
 	
 	@Autowired
 	private ModelMapper modelMapper;
 	
+	//add transactional
 	@Override
 	public TeamsDTO addTeamsService(TeamsDTO teamsDTO) {
 
@@ -104,32 +105,26 @@ public class ServiceDAOImpl implements ServiceDAO {
 			
 	}
 
-	@Override
-	public TeamsDTO replaceTeamsService(Integer id, TeamsDTO teamsDTO) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	/*@Override
+	@Override
 	public TeamsDTO replaceTeamsService(Integer id, TeamsDTO teamsDTO) {
 
 		Optional<Teams> t = teamsRepo.findById(id);
 		
 		//Optional<Players> p = teamsRepo.findById(teamsDTO.getTeamId());//rest template here
 		
-		if(t.isPresent() & p.isPresent()) {
+		if(t.isPresent()) {
 			
-			t.get().setTeamId(); //.setName(teamsDTO.getName());
-			
-			t.get().setAge(teamsDTO.getAge());
-			t.get().setPosition(teamsDTO.getPosition());
-			t.get().setWage(teamsDTO.getWage());
-			t.get().setValue(teamsDTO.getValue());
-			t.get().setTeam(p.get());
+			t.get().setTeamId(teamsDTO.getTeamId()); 
+			t.get().setName(teamsDTO.getName());	
+			t.get().setStadium(teamsDTO.getStadium());		
+			t.get().setCapacity(teamsDTO.getCapacity());		
+			t.get().setCity(teamsDTO.getCity());		
+			t.get().setValue(teamsDTO.getValue());		
 			
 		}
 		
 		return modelMapper.map(teamsRepo.save(t.get()), TeamsDTO.class);
-	}*/
+	}
 
 }
