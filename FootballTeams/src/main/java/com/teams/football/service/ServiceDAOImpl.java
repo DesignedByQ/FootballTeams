@@ -74,7 +74,7 @@ public class ServiceDAOImpl implements ServiceDAO {
 			
 		} else {
 		
-			return modelMapper.map(ot, TeamsDTO.class);
+			return modelMapper.map(ot.get(), TeamsDTO.class);
 		
 		}
 		
