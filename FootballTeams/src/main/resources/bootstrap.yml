@@ -6,10 +6,12 @@ spring:
     name: FootballTeams
   cloud:
     consul:
+      discovery:
+        hostname: localhost
       config:
         enabled: true
         prefix: config
         defaultContext: application
         profileSeparator: '::'
         format: YAML
-   
+  

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -28,6 +29,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api")
 @Validated
+@CrossOrigin
 public class ControllerAPI {
 	
 	
@@ -36,9 +38,9 @@ public class ControllerAPI {
 	
 	
 	@PostMapping(value = "/promotion", consumes = {MediaType.ALL_VALUE})
-	public ResponseEntity<TeamsDTO> addTeams(@Valid @RequestBody TeamsDTO TeamsDTO) {
+	public ResponseEntity<TeamsDTO> addTeams(@Valid @RequestBody TeamsDTO teamsDTO) {
 		
-		return ResponseEntity.status(HttpStatus.CREATED).body(serviceDAOImpl.addTeamsService(TeamsDTO));
+		return ResponseEntity.status(HttpStatus.CREATED).body(serviceDAOImpl.addTeamsService(teamsDTO));
 		
 	}
 	
