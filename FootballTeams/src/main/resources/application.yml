@@ -1,0 +1,23 @@
+server:
+   port: 8081
+
+spring:
+  application:
+    name: FootballTeams
+  datasource:
+    password: 
+    url: jdbc:mysql://localhost:3306/transferwindow
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+   
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  

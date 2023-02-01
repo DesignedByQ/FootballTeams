@@ -39,7 +39,7 @@ public class ControllerAPI {
 	
 	@PostMapping(value = "/promotion", consumes = {MediaType.ALL_VALUE})
 	public ResponseEntity<TeamsDTO> addTeams(@Valid @RequestBody TeamsDTO teamsDTO) {
-		
+		System.out.println(2222);
 		return ResponseEntity.status(HttpStatus.CREATED).body(serviceDAOImpl.addTeamsService(teamsDTO));
 		
 	}
